@@ -2,11 +2,11 @@
 
 //MATCH (n) DETACH DELETE n;
 // Briefe
-//https://docs.google.com/spreadsheets/d/1HhBqJr6_nI0JHre2eIZG__He8ZTg27tmEQQQetuyER4/export?format=csv&id=1HhBqJr6_nI0JHre2eIZG__He8ZTg27tmEQQQetuyER4&gid=1140213416 
+// https://github.com/kuczera/Briefeingangsregister/raw/master/data/Briefe.csv
 // Personen
-//https://docs.google.com/spreadsheets/d/1HhBqJr6_nI0JHre2eIZG__He8ZTg27tmEQQQetuyER4/export?format=csv&id=1HhBqJr6_nI0JHre2eIZG__He8ZTg27tmEQQQetuyER4&gid=792914691 
+// https://github.com/kuczera/Briefeingangsregister/raw/master/data/Personen.csv
 // Verbindungen
-//https://docs.google.com/spreadsheets/d/1HhBqJr6_nI0JHre2eIZG__He8ZTg27tmEQQQetuyER4/export?format=csv&id=1HhBqJr6_nI0JHre2eIZG__He8ZTg27tmEQQQetuyER4&gid=90384206 
+// https://github.com/kuczera/Briefeingangsregister/raw/master/data/Verbindung.csv
 // Import des Briefeingangsregisters
 CREATE INDEX ON :Letter(id);
 CREATE INDEX ON :Letter(receiver);
@@ -19,7 +19,7 @@ CREATE INDEX ON :Type(type);
 CREATE INDEX ON :Entity(id);
 
 // Alle Briefe importieren
-LOAD CSV WITH HEADERS FROM "https://docs.google.com/spreadsheets/d/1HhBqJr6_nI0JHre2eIZG__He8ZTg27tmEQQQetuyER4/export?format=csv&id=1HhBqJr6_nI0JHre2eIZG__He8ZTg27tmEQQQetuyER4&gid=1140213416" AS line
+LOAD CSV WITH HEADERS FROM "https://github.com/kuczera/Briefeingangsregister/raw/master/data/Briefe.csv" AS line
 CREATE (l:Letter {nr:line.Nr, startyear:line.sy, startmonth:line.sm, startday:line.sd, endmonth:line.em, endday:line.ed, id:line.ID, folio:line.folio, receiver:line.Empfaenger, sender:line.Absender, type:line.type, theme:line.theme, source:line.Quelle, answer:line.Antwort, commentary:line.Kommentar, bmf:line.Bürgermeisterfrage});
 
 // type anlegen und verknüpfen
@@ -39,11 +39,11 @@ MATCH (l:Letter)
 SET l.isoStartDate = date(l.startdate);
 
 // Entities importieren 4731
-LOAD CSV WITH HEADERS FROM "https://docs.google.com/spreadsheets/d/1HhBqJr6_nI0JHre2eIZG__He8ZTg27tmEQQQetuyER4/export?format=csv&id=1HhBqJr6_nI0JHre2eIZG__He8ZTg27tmEQQQetuyER4&gid=792914691" AS line
+LOAD CSV WITH HEADERS FROM "https://github.com/kuczera/Briefeingangsregister/raw/master/data/Personen.csv" AS line
 CREATE (e:Entity {id:line.ID,name:line.name, type:line.typ, role:line.role, place:line.place, state:line.state, polit:line.polit, profession:line.beruf, specific:line.spezifik, sex:line.sex, institution:line.institution, familiy:line.family});
 
 // Verbindungen importieren
-LOAD CSV WITH HEADERS FROM "https://docs.google.com/spreadsheets/d/1HhBqJr6_nI0JHre2eIZG__He8ZTg27tmEQQQetuyER4/export?format=csv&id=1HhBqJr6_nI0JHre2eIZG__He8ZTg27tmEQQQetuyER4&gid=90384206" AS line
+LOAD CSV WITH HEADERS FROM "https://github.com/kuczera/Briefeingangsregister/raw/master/data/Verbindungen.csv" AS line
 MATCH (start:Entity {id:line.IdPerson})
 MATCH (end:Letter {id:line.IdBER})
 with start, end, line.Rolle AS rel
@@ -51,9 +51,7 @@ call apoc.merge.relationship(start, toUpper(rel), {}, {}, end) yield rel as dumm
 return count(*);
 
 // type-Property als zusätzliche Labels des entity-Knotens anlegen
-MATCH (n:Entity) 
+MATCH (n:Entity)
 WITH n, n.type as typ
 CALL apoc.create.addLabels(n, [typ]) yield node
 return count(n);
-
-
