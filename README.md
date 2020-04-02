@@ -8,4 +8,10 @@ veröffentlicht.
 
 Im Ordner data befinden sich die csv-Dateien mit den Daten des Briefeingangsregisters.
 
+Im Ordner cypher befinden sich die cypher-Befehle für die Erstellung der neo4j-Datenbank.
+
+Hinweise für die Installation von neo4j finden sie hier: https://neo4j.com/docs/operations-manual/current/installation/ 
+
+Auch im (Github-Buch zu Graphentechnologien)https://kuczera.github.io/Graphentechnologien finden Sie (Hinweise für die Installation)https://kuczera.github.io/Graphentechnologien/05_Einfuehrung_und_Theorie.html#installation-und-start im Kapitel (Einführung und theoretische Grundlagen)https://kuczera.github.io/Graphentechnologien/05_Einfuehrung_und_Theorie.html.
+
 
