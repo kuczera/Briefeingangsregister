@@ -25,5 +25,5 @@ RETURN labels(e) AS Typ, e.name AS Name, count(m) AS Anzahl
 ORDER BY Anzahl DESC;
 
 // Häufigkeit der gemeinsam mit Albrecht erwähnten Entitäten
-MATCH (e1:Person)-[:MENTIONED_IN]-(l:Letter)<-[:MENTIONED_IN]-(e2:Entity {name:'Markgraf Albrecht von Brandenburg'})
+MATCH (e1:Person)-[:MENTIONED_IN]->(l:Letter)<-[:MENTIONED_IN]-(e2:Entity {name:'Markgraf Albrecht von Brandenburg'})
 RETURN e1.name AS Name, count(*) AS Anzahl ORDER BY Anzahl DESC LIMIT 10;

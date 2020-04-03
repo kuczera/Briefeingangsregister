@@ -1,6 +1,7 @@
 // cypher import Nürnberger Briefregister
 
-//MATCH (n) DETACH DELETE n;
+MATCH (n) DETACH DELETE n;
+
 // Briefe
 // https://github.com/kuczera/Briefeingangsregister/raw/master/data/Briefe.csv
 // Personen
@@ -8,6 +9,8 @@
 // Verbindungen
 // https://github.com/kuczera/Briefeingangsregister/raw/master/data/Verbindung.csv
 // Import des Briefeingangsregisters
+
+// Indexe erstellen
 CREATE INDEX ON :Letter(id);
 CREATE INDEX ON :Letter(receiver);
 CREATE INDEX ON :Letter(sender);
