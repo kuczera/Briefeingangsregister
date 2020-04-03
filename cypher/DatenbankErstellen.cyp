@@ -4,7 +4,7 @@
 // Briefe
 // https://github.com/kuczera/Briefeingangsregister/raw/master/data/Briefe.csv
 // Personen
-// https://github.com/kuczera/Briefeingangsregister/raw/master/data/Personen.csv
+// https://github.com/kuczera/Briefeingangsregister/raw/master/data/Entitaeten.csv
 // Verbindungen
 // https://github.com/kuczera/Briefeingangsregister/raw/master/data/Verbindung.csv
 // Import des Briefeingangsregisters
@@ -39,7 +39,7 @@ MATCH (l:Letter)
 SET l.isoStartDate = date(l.startdate);
 
 // Entities importieren 4731
-LOAD CSV WITH HEADERS FROM "https://github.com/kuczera/Briefeingangsregister/raw/master/data/Personen.csv" AS line
+LOAD CSV WITH HEADERS FROM "https://github.com/kuczera/Briefeingangsregister/raw/master/data/Entitaeten.csv" AS line
 CREATE (e:Entity {id:line.ID, name:trim(line.name), type:line.typ, role:line.role, place:line.place, state:line.state, polit:line.polit, profession:line.beruf, specific:line.spezifik, sex:line.sex, institution:line.institution, familiy:line.family});
 
 // Verbindungen importieren

@@ -12,7 +12,7 @@ Auch im [Github-Buch zu Graphentechnologien](https://kuczera.github.io/Graphente
 
 Daten und Einspielskripte sind auf Github veröffentlicht unter https://github.com/kuczera/Briefeingangsregister.
 
-Im Ordner [data](https://github.com/kuczera/Briefeingangsregister/tree/master/data) befinden sich die csv-Dateien mit den Daten des Briefeingangsregisters, nämlich [Briefe](https://github.com/kuczera/Briefeingangsregister/blob/master/data/Briefe.csv), [Personen](https://github.com/kuczera/Briefeingangsregister/blob/master/data/Personen.csv) und [Verbindungen](https://github.com/kuczera/Briefeingangsregister/blob/master/data/Verbindungen.csv).
+Im Ordner [data](https://github.com/kuczera/Briefeingangsregister/tree/master/data) befinden sich die csv-Dateien mit den Daten des Briefeingangsregisters, nämlich [Briefe](https://github.com/kuczera/Briefeingangsregister/blob/master/data/Briefe.csv), [Entitäten](https://github.com/kuczera/Briefeingangsregister/blob/master/data/Entitaeten.csv) und [Verbindungen](https://github.com/kuczera/Briefeingangsregister/blob/master/data/Verbindungen.csv).
 
 Auf diese csv-Dateien greifen die cypher-Skripte im Ordner [cypher](https://github.com/kuczera/Briefeingangsregister/tree/master/cypher) zu. Das Skript [DatenbankErstellen.cyp](https://github.com/kuczera/Briefeingangsregister/raw/master/cypher/DatenbankErstellen.cyp) erstellt die neo4j-Datenbank und in der Datei [Abfragen.cyp](https://github.com/kuczera/Briefeingangsregister/raw/master/cypher/Abfragen.cyp) sind verschiedene Beispiel für Abfragen enthalten.
 
